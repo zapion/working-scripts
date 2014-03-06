@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app>
 
 <head>
     <meta charset="utf-8">
@@ -15,6 +15,7 @@
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/restangular/1.3.1/restangular.js"></script>
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/restangular/1.3.1/restangular.min.js"></script>
     <!-- Le styles -->
+    <link href='main.css' rel='stylesheet'>
     <link href="bootstrap.min.css" rel="stylesheet" type="text/css" />
     <style>
         body {
@@ -33,7 +34,6 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
     <link rel="shortcut icon" href="../assets/ico/favicon.png">
-<link href='main.css' rel='stylesheet'>
 </head>
 
 <body>
@@ -46,16 +46,16 @@
 
                 </button>
                 <a class="brand" href="#">Moztrap Wrapper</a>
-                <div style="height: 0px;" class="nav-collapse collapse">
+                <div style="height: 0px;" class="nav-collapse collapse" ng-controller="clear">
                     <ul class="nav">
                         <li class="active">
                             <a href="#">Clear</a>
                         </li>
                         <li>
-                            <a href="#about">Download</a>
+                            <a href="#download">Download</a>
                         </li>
                         <li>
-                            <a href="#contact">Upload</a>
+                            <a href="#upload">Upload</a>
                         </li>
                     </ul>
                 </div>
@@ -63,21 +63,19 @@
             </div>
         </div>
     </div>
-    <div class="container-fluid">
-        <select>
-            <option value="tag">tag</option>
-            <option value="product">product</option>
-            <option value="version">version</option>
-            <option value="priority">priority</option>
-            <option value="creator">creator</option>
-            <option value="suite">Suite</option>
-        </select>
-        <input class="input-small" type="text">
+    <div class="container-fluid" ng-controller="filterCtrl">
+        <form ng-submit='addFilter()'>
+            <select ng-model='filterType' ng-options='type for type in filterTypes'>
+            </select>
+            
+            <input class="input-long" type="text" ng-model="searchText">
+            <input class='btn-primary' type="submit" value="+"></input>
+        </form>
         <div class="row-fluid">
             <div class="span4">
                 <div class="row-fluid">
-                    <table class="table">
-                        <tbody>
+                    <table class="table table-striped">
+                        <thead>
                             <tr>
                                 <th class="">Title
                                     <br>
@@ -89,42 +87,29 @@
                                     <br>
                                 </th>
                             </tr>
-                            <tr>
-                                <td class="">row 1,col 1</td>
+                        </thead>
+                        <tbody ng-controller="getList">
+                            <tr ng-repeat="testcase in testcases">
+                                <td class="">{{testcase.name}}</td>
                                 <td class="">row 1,col 2</td>
                                 <td>row 1,col 3</td>
-                            </tr>
-                            <tr>
-                                <td class="">row 2,col 1</td>
-                                <td>row 2,col 2</td>
-                                <td class="">row 2,col 3</td>
-                            </tr>
-                            <tr>
-                                <td>row 3,col 1</td>
-                                <td>row 3,col 2</td>
-                                <td class="">row 3,col 3</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
-            <div id="taglist" class="span6">
-
+            <div class="span6">
                 <div class="row-fluid">
-                    <label class="label label-info">tag: xxxx</label>
-                    <label class="label label-info">tag: yyyy</label>
-                    <label class="label label-info">tag: zzzz</label>
-                    <label class="label label-success">version: 1.4</label>
-                    <label class="label label-important">product: firefox os</label>
+                    <label class="taglist label label-info" ng-repeat="f in filter">{{f.type}} : {{f.name}}</label>
                 </div>
             </div>
         </div>
     </div>
     <!-- /container -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <!--script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"-->
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js">
     </script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
     <script src='main.js'></script>
 
 </html>
