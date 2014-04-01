@@ -231,6 +231,7 @@ class FlashApp():
 
     def doFlash(self):
         setOsVars(OsVars)
+        #TODO: run flash here
         self.quit()
 
 
