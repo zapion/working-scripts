@@ -2,7 +2,7 @@
 
 if [ "$(whoami)" != "root" ]; then
     echo "We might need to run as root permission"
-
+fi
 adb shell stop b2g
 location=`adb shell ls /data/b2g/mozilla | grep default`
 location="/data/b2g/mozilla/$location"
