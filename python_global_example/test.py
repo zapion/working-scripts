@@ -3,6 +3,5 @@
 import mod
 import mod2
 
-mod.set_test()
-
-print mod2.test()
+mod.set_test(111)
+mod2.test()

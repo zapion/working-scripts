@@ -6,6 +6,6 @@ def get_test():
   global _test
   return _test
 
-def set_test():
+def set_test(var):
   global _test
-  _test = 5
+  _test = var

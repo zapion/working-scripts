@@ -3,4 +3,4 @@
 import mod
 
 def test():
-  print(mod.get_test())
+  print mod.get_test()
