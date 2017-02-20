@@ -1,4 +1,4 @@
-cd gecko-dev
+cd git-gecko
 
 git format-patch HEAD~3 
 mv *.patch ..

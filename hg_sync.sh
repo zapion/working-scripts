@@ -9,7 +9,7 @@ hg export awsy-lib --git > /tmp/gg1
 hg export awsy-task --git > /tmp/gg2
 hg export awsy-package --git > /tmp/gg3
 
-cd ../gecko-dev
+cd ../git-gecko
 
 git reset --hard HEAD~3
 
